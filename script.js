@@ -20,7 +20,7 @@ window.onscroll=() => {
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
-        if(top => offset && top < offset + height){
+        if(top >= offset && top < offset + height){
            navLinks.forEach(links =>{
               links.classList.remove('active');
               document.querySelector('header nav a[href*=' + id +']').classList.add('active');
@@ -51,11 +51,62 @@ ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
 ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
 
- /*================ typed js ===============*/
- const typed = new Typed('.multiple-text',{
-    strings:['Frontend Developer','Video Editer','Blogger'],
-    typeSpeed:100,
-    backSpeed:100,
-    backdelay:1000,
-    loop:true
- });
+/*================ Typed JS ===============*/
+const typed = new Typed('.multiple-text', {
+    strings: [
+        'MERN Stack Developer with AI',
+        'Full Stack Developer'
+    ],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true
+});
+
+/*=========== About Read More ==========*/
+
+const readMoreBtn = document.querySelector('#readMoreBtn');
+const aboutMore = document.querySelector('#aboutMore');
+
+readMoreBtn.onclick = () => {
+
+    if (aboutMore.classList.contains('show')) {
+
+        aboutMore.classList.remove('show');
+        readMoreBtn.textContent = 'Read More';
+
+    } else {
+
+        aboutMore.classList.add('show');
+        readMoreBtn.textContent = 'Read Less';
+
+    }
+
+};
+
+/*=========== Services Read More ==========*/
+
+const serviceButtons = document.querySelectorAll('.service-btn');
+
+serviceButtons.forEach((button) => {
+
+    button.onclick = () => {
+
+        const serviceBox = button.closest('.services-box');
+        const moreText = serviceBox.querySelector('.service-more');
+
+        if (moreText.classList.contains('show')) {
+
+            moreText.classList.remove('show');
+            button.textContent = 'Read More';
+
+        } else {
+
+            moreText.classList.add('show');
+            button.textContent = 'Read Less';
+
+        }
+
+    };
+
+});
